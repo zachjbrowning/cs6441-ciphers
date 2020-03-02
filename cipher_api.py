@@ -4,9 +4,10 @@ from ciphers.transposition import hello_world
 
 """
 Available methods for encoding and decoding:
-    - transposition:
-        - key must be of type int, specifying the amount the alphabet should be shifted across.
-
+    vignere:
+        - key must be a string of purely alphabetic letters (typically a word)
+    caeser:
+        - key must be an integer
 
 """
 
