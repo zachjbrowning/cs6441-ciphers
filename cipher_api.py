@@ -1,15 +1,17 @@
 from ciphers.caesar import caesar
 from ciphers.vignere import vignere
+from ciphers.transposition import transposition
 
 
 
 """
 Available methods for encoding and decoding:
     vignere:
-        - key must be a string of purely alphabetic letters (typically a word)
+        - key must be a string of purely alphabetic letters 
     caeser:
         - key must be an integer
-
+    key_transpose:
+        - key must be a string of purely alphabetic letters
 """
 
 
