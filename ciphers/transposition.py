@@ -62,6 +62,9 @@ def transpositionCiphering(key, message, decode):
     codedMessage = ''
     for row in codedMatrix:
         codedMessage += ''.join(row)
+    while codedMessage[-1] == ' ':
+        codedMessage = codedMessage[:-1]
+    
     return codedMessage
 
 

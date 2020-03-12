@@ -1,6 +1,7 @@
 from ciphers.caesar import caesar
 from ciphers.vignere import vignere
 from ciphers.transposition import transposition
+from ciphers.combo import combo
 
 
 
@@ -12,6 +13,8 @@ Available methods for encoding and decoding:
         - key must be an integer
     key_transpose:
         - key must be a string of purely alphabetic letters
+    combo:
+        -key must be a string of purely alphabetic letters
 """
 
 
