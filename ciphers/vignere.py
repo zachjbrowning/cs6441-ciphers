@@ -19,7 +19,7 @@ def getPattern(key):
     for letter in key:
         
         if letter.isalpha() is False:
-            exit("Invalid Key")
+            raise KeyError("Key must be alphabetic only!")
         pattern.append(alpha.find(letter))
     return pattern
 

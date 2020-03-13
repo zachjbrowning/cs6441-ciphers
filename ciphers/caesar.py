@@ -16,6 +16,10 @@ def moveChar(letter, shift):
 class caesar:
 
     def encode(key, message):
+        try:
+            key = int(key)
+        except ValueError:
+            raise KeyError("Key must be of type int")
         answer = ''
         for letter in message:
             answer += moveChar(letter, key)

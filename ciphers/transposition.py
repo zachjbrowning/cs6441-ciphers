@@ -20,7 +20,7 @@ def makeMatrix(message):
 def makeOrder(key, rows, columns):
     for letter in key:
         if not letter.isalpha():
-            exit('invalid key')
+            raise KeyError("Key must be alphabetic only!")
     rowkey = list((key * m.ceil(rows / len(key)))[:rows])
     rowkey.reverse()
     uniqueRowkey = []
