@@ -1,18 +1,22 @@
 from cmd_control import do_cmd, prompt
 
+
 def startup():
     print("Welcome to my encoding/decoding tool!")
-    print("Please input a command. For help on commands, use '?'")
-    return prompt()
+    return input("Please input your name: ")
 
 def shutdown():
     print("Thankyou for using my encoding/decoding tool. See you next time!")
 
 def interface():
-    cmd = startup() 
-
+    
+    name = startup() 
+    
+    print("Please input a command. For help on commands, use '?'")
+    cmd = prompt()
+    
     while cmd is not 'q':
-        do_cmd(cmd)
+        name = do_cmd(cmd, name)
         print("Please input a command. For help on commands, use '?'")
         cmd = prompt()
 
