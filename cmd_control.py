@@ -32,7 +32,8 @@ def encode_decode(is_encode, msg=None):
             choice = prompt()
     print("You are using the " + methods[choice] + " method!!")
     key = input("Please input your key: ")
-
+    if choice in [2, 3, 4]:
+        key = "".join(key.split())
     if not msg:
         msg = input("Please input your message: ")
     if is_encode:
