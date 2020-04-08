@@ -1,4 +1,4 @@
-from cipher_api import encode, decode, methods, documentation, method_classes
+from cipher_api import encode, decode, methods, overview, method_classes, in_depth
 from db_control import load_data, save_data, reset_data
 
 def prompt():
@@ -33,11 +33,16 @@ def encode_decode(is_encode, msg=None):
     print("You are using the " + methods[choice] + " method!!")
     key = input("Please input your key: ")
     #NEED TO DO BETTER ERROR CHECKING HERE
-    if choice in [2, 3, 4]:
+    if choice in [2, 3]:
         key = "".join(key.split())
         while not valid_string(key):
-            input("Invalid key. Please input a string of only alphabetic characters and spaces: ")
+            key = input("Invalid key. Please input a string of only alphabetic characters and spaces: ")
             key = "".join(key.split())
+    elif choice is 4:
+        key = " ".join(key.split())
+        while not valid_string(key):
+            key = input("Invalid key. Please input a string of only alphabetic characters and spaces: ")
+            key = " ".join(key.split())
     else:
         if not key.isdigit():
             while not key.isdigit():
@@ -47,7 +52,11 @@ def encode_decode(is_encode, msg=None):
     if is_encode:
         return encode(method_classes[choice], key, msg)
     else:
-        return decode(method_classes[choice], key, msg)
+        try: 
+            result = decode(method_classes[choice], key, msg)
+        except ValueError:
+            return "Message is not decodable. It is either invalid or has been corrupted."
+        return result
 
 def valid_string(key_list):
     for word in key_list:
@@ -60,6 +69,8 @@ def send_msg(name):
     data = load_data()
 
     recipient = input("Please input the name of the person you wish to contact: ")
+    while recipient is '':
+        recipient = input("Cannot have an empty name. Please try again: ")
 
     msg = encode_decode(True)
     if recipient in data['users']:
@@ -106,7 +117,33 @@ def check_msg(name):
         print(result)
     
 
+def serve_info():
+    print("Please choose which cipher you would like more info on:")
+    for i in range(len(methods)):
+        print(' - ' + str(i) + ' : ' + methods[i])
+    choice = prompt()
+    correct = False
+    while not correct:
+        try:
+            choice = int(choice)
+            if choice < 0 or choice >= len(methods):
+                raise ValueError
+            correct = True
+        except ValueError:
+            correct = False
+            print("Input was not an int or not a valid choice. Please choose a valid method. (Int between 0 and " + str(len(methods) - 1) + ")")
+            choice = prompt()
+    print("A brief overview on the " + methods[choice] + " method:")
+    print(overview[choice])
+    print(' ')
+    more = input("Would you like a more in depth explanation of how this cipher works? [Y/N] ")
+    while more not in ['Y', 'y', 'N', 'n']:
+        more = input("Invalid choice. Please choose between yes ('Y') and no ('N'): ")
+    if more in ['Y', 'y']:
+        print(in_depth[choice])
+        print(' ')
 
+    
 
 def do_cmd(cmd, name):
     if cmd is '?':
@@ -114,12 +151,13 @@ def do_cmd(cmd, name):
     elif cmd is 'e':
         print('\n', encode_decode(True), '\n')
     elif cmd is 'd':
-        print("Result:")
         print('\n', encode_decode(False), '\n')
     elif cmd is 'i':
-        print("For more info please email z5215283@ad.unsw.edu.au")
+        serve_info()
     elif cmd is 'n':
         name = input("Please input your name: ")
+        while name is '':
+            name = input("Cannot have an empty name. Please try again: ")
     elif cmd is 'r':
         choice = input("Are you sure you want to reset the database? [Y/N] ")
         if choice is 'Y' or choice is 'y':
@@ -132,6 +170,8 @@ def do_cmd(cmd, name):
         send_msg(name)
     elif cmd is 'c':
         check_msg(name)
+    elif cmd is '':
+        pass
     else:
         print("Invalid command. For help with commands use '?")
     return name

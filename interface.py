@@ -11,6 +11,8 @@ def shutdown():
 def interface():
     
     name = startup() 
+    while name is '':
+        name = input("Cannot have an empty name. Please try again: ")
     
     print("Please input a command. For help on commands, use '?'")
     cmd = prompt()
