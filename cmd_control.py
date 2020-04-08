@@ -79,6 +79,7 @@ def send_msg(name):
         data['users'][recipient] = { name : msg, }
 
     save_data(data)
+    print("Message sent.")
 
 def check_msg(name):
     data = load_data()
@@ -140,6 +141,7 @@ def serve_info():
     while more not in ['Y', 'y', 'N', 'n']:
         more = input("Invalid choice. Please choose between yes ('Y') and no ('N'): ")
     if more in ['Y', 'y']:
+        print(' ')
         print(in_depth[choice])
         print(' ')
 
