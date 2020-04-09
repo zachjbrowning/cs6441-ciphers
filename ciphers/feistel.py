@@ -59,13 +59,11 @@ def feistel_back(former, latter, cipher_order, cipher_keys, ciphers):
 class feistel:
     def encode(key, message):
         message, cipher_order, cipher_keys = prep(key.split(), message)
-        message = combo.encode(key.split()[0], message)
         former = message[:len(message) // 2]
         latter = message[len(message) // 2:]
         ciphers = [vignere, transposition, combo]
         former, latter = feistel_forward(former, latter, cipher_order, cipher_keys, ciphers)
         msg = str(former) + '?' + str(latter)
-        
         return msg
     def decode(key, message):
         discard, cipher_order, cipher_keys = prep(key.split(), message)
@@ -76,6 +74,5 @@ class feistel:
         latter = parts[1]
         ciphers = [vignere, transposition, combo]
         former, latter = feistel_back(former, latter, cipher_order, cipher_keys, ciphers)
-        msg = combo.decode(key.split()[0], former + latter)
-        return msg
+        return former + latter
         
