@@ -2,7 +2,8 @@
 THE PROJECT:
 My little project was based around ciphertexts. When I was a kid I loved the idea of spies and secret codes so I thought it could be interesting to explore them in a bit more depth! My goal was to explore how a bunch of different ciphertexts worked and then go about figuring out how to implement them using Python. I then wanted to build an interface that enabled the sending of messages between people using these ciphers. In my initial proposal I also intended to try and develop a program to crack some of the simpler ciphers.
 
->>LINK TO PROPOSAL
+My proposal can be found here:
+https://www.openlearning.com/u/zacharybrowning-q5xwrr/blog/SomethingAwesome/
 
 WHAT I ACHIEVED:
 Implementing the ciphers was actually good fun. I managed to implement the encoding and decoding of a Caesar cipher, Vignere cipher, Transposition cipher, a combination of the Vignere and Transposition ciphers, and my own version of a Feistel Network, utilising the previously implemented ciphers. These all had their own specific challenges in implementation and in as much each taught me something slightly different. These ciphers were brought together in a simple shell that allowed a user to encrypt, decrypt, and send and receive messages. The shell incorporates a simple database that stores messages and could easily be moved online. The ciphertexts are as secure as the user makes them, being able to choose both the method and the key for any encryption. 
@@ -21,5 +22,27 @@ https://github.com/zachjbrowning/cs6441-ciphers
 
 BLOG POSTS:
 
-one sentence overview
-link
+Plan of very first iteration (Week 2):
+https://www.openlearning.com/u/zacharybrowning-q5xwrr/blog/FirstIterationOfMySa/
+
+Week 3 update:
+https://www.openlearning.com/u/zacharybrowning-q5xwrr/blog/Sa1WeekIn/
+
+Week 4 update:
+https://www.openlearning.com/u/zacharybrowning-q5xwrr/blog/SaWeek2Update/
+
+Week 5 update:
+https://www.openlearning.com/u/zacharybrowning-q5xwrr/blog/SaWeek5/
+
+Week 6 update:
+https://www.openlearning.com/u/zacharybrowning-q5xwrr/blog/SaWeek6/
+
+Week 7 update:
+https://www.openlearning.com/u/zacharybrowning-q5xwrr/blog/SaWeek7/
+
+Week 8 update:
+https://www.openlearning.com/u/zacharybrowning-q5xwrr/blog/SaWeek8/
+
+Final iteration (Week 8):
+https://www.openlearning.com/u/zacharybrowning-q5xwrr/blog/SaFinalIteration/
+
