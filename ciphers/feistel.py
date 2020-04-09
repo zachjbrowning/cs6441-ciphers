@@ -21,6 +21,11 @@ def ordering(keylist):
     return result
 
 def prep(keylist, message):
+    msgcopy = message
+    message = ' '
+    for letter in msgcopy:
+        if letter.isalpha() or letter is ' ':
+            message += letter
     if len(message) % 2 == 1:
         message += ' '
     cipher_order = ordering(keylist)

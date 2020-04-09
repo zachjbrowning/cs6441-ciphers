@@ -67,7 +67,6 @@ def valid_string(key_list):
 
 def send_msg(name):
     data = load_data()
-
     recipient = input("Please input the name of the person you wish to contact: ")
     while recipient is '':
         recipient = input("Cannot have an empty name. Please try again: ")
@@ -77,7 +76,6 @@ def send_msg(name):
         data['users'][recipient][name] = msg 
     else:
         data['users'][recipient] = { name : msg, }
-
     save_data(data)
     print("Message sent.")
 
@@ -102,7 +100,6 @@ def check_msg(name):
             while not p_id.isdigit() or int(p_id) < 0 or int(p_id) > len(persons) - 1:
                 p_id = input("Invalid choice. Please insert number between 0 and " + str(len(persons) - 1) + ": ")
             sender = persons[int(p_id)]
-            print(sender, data['users'][name])
             print("The message from " + sender + " is:")
             print("'" + data['users'][name][sender] + "'")
     
@@ -149,7 +146,7 @@ def serve_info():
 
 def do_cmd(cmd, name):
     if cmd is '?':
-        return help_cmd()
+        help_cmd()
     elif cmd is 'e':
         print('\n', encode_decode(True), '\n')
     elif cmd is 'd':
